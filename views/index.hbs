@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <title>HYPERASEM</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/client.js" defer></script>
+  </head>
+  <body>
+    <div id="container">
+      
+      <ul id="online">
+      </ul>
+      
+      <div id="messages">
+        {{#each messages}}
+          <div class="message">
+            <p class="handle">{{this.username}}</p>
+            <p class="text">{{this.message}}</p>
+        </div>
+        {{/each}}
+      </div>
+      
+      <form action="">
+        <input id="new-message" autocomplete="off" /><button type="submit" disabled>{{username}}</button>
+      </form>
+      
+    </div>
+  </body>
+</html>

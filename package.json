@@ -1,0 +1,25 @@
+{
+  "name": "hyperasem",
+  "version": "0.0.1",
+  "description": "chat zone",
+  "main": "server.js",
+  "scripts": {
+    "start": "node -r esm server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "sqlite3": "^4.0.8",
+    "esm": "^3.2.25",
+    "socket.io": "^2.2.0",
+    "hbs": "^4.0.4"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
