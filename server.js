@@ -4,6 +4,8 @@ import { createServer } from 'http'
 
 import ChatStore from './chatstore.js'
 import { scrambler } from './scrambler.js'
+import path from 'path'
+
 
 // initialize server
 const app = express()
@@ -12,6 +14,9 @@ const io = socketIO(http)
 
 const dbFile = './.data/sqlite.db'
 const chatStore = new ChatStore(dbFile)
+const port = 8080
+const __dirname = path.resolve();
+// otherwise __dirname is not defined error
 
 let usersOnline = []
 
@@ -44,7 +49,9 @@ io.on('connection', socket => {
   })
 
   socket.on('message', ({username, datetime, rawMessage}) => {
-    const message = scrambler(rawMessage)
+    // scramble message
+    // const message = scrambler(rawMessage)
+    const message = rawMessage
     const data = {
       username,
       datetime,
@@ -65,6 +72,6 @@ io.on('connection', socket => {
 })
 
 // listen!
-http.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}`)
+http.listen(port, () => {
+  console.log(`Listening on port ${port}`)
 })

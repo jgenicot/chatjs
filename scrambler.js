@@ -11,7 +11,7 @@ export function scrambler(text) {
     }
   }
   
-  // return text.split('').map(randomChar).join('')
+  return text.split('').map(randomChar).join('')
   // don't scramble anything
-  return text
+  //return text
 }

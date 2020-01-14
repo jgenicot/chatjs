@@ -21,17 +21,13 @@ export default class ChatStore {
   
   getMessages(time = 'now', callback) {
     const db = this.db
-    const sql = `SELECT * from hyperasem 
-                 ORDER BY datetime(datetime) DESC
-                 LIMIT 100`
-    
+    const sql = 'SELECT * from hyperasem ORDER BY datetime(datetime) DESC LIMIT 100'
     db.all(sql, [], callback)    
   }
   
   saveMessage({username, message, datetime}) {
     const db = this.db
-    const sql = `INSERT INTO hyperasem (username, message, datetime)
-                 VALUES ('${username}', '${message}', '${datetime}');`
+    const sql = `INSERT INTO hyperasem (username, message, datetime) VALUES ('${username}', '${message}', '${datetime}')`
     db.run(sql)
   }  
 }
