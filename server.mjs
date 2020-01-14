@@ -2,8 +2,8 @@ import express from 'express'
 import socketIO from 'socket.io'
 import { createServer } from 'http'
 
-import ChatStore from './chatstore.js'
-import { scrambler } from './scrambler.js'
+import ChatStore from './chatstore.mjs'
+import { scrambler } from './scrambler.mjs'
 import path from 'path'
 
 
@@ -14,7 +14,6 @@ const io = socketIO(http)
 
 const dbFile = './.data/sqlite.db'
 const chatStore = new ChatStore(dbFile)
-const port = 8080
 const __dirname = path.resolve();
 // otherwise __dirname is not defined error
 
@@ -72,6 +71,6 @@ io.on('connection', socket => {
 })
 
 // listen!
-http.listen(port, () => {
-  console.log(`Listening on port ${port}`)
+http.listen(process.env.PORT, () => {
+  console.log(`Listening on port ${process.env.PORT}`)
 })
