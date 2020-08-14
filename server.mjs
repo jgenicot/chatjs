@@ -37,11 +37,12 @@ app.get('/', (request, response) => {
 
 // socket.io stuff
 io.on('connection', socket => {
-  console.log('a user connected')
+  var clientip = socket.request.connection.remoteAddress
+  console.log('a user connected from: '+ clientip)
   let thisHandle
   
   socket.on('handle-online', handle => {
-    console.log(`${handle} logged on`)
+    console.log(`${handle} logged on `)
     thisHandle = handle
     usersOnline.push(handle)
     io.emit('online', usersOnline)
